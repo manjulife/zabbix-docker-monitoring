@@ -1,4 +1,4 @@
-FROM alpine-4.2-latest
+FROM zabbix/zabbix-agent:alpine-4.2-latest
 
 ENV ZABBIX_VERSION=release/4.2
 
