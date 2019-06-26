@@ -1,11 +1,24 @@
 #!/bin/bash 
-containerID=$(curl -s --unix-socket /var/run/docker.sock http:/localhost/containers/json?all=1 | jq -r ".[] | select(.Names[0]==\"/heuristic_engelbart\") | .Id")
-echo "containerID: $containerID"
+containerName=$1
+containerID=$(curl -s --unix-socket /var/run/docker.sock http:/localhost/containers/json?all=1 | jq -r ".[] | select(.Names[0]==\"/$containerName\") | .Id")
+#echo "containerID: $containerID"
 containerState=$(curl -s --unix-socket /var/run/docker.sock http:/localhost/containers/$containerID/json | jq -r .State.Status )
-echo "state: $containerState"
+#echo "state: $containerState"
 
-#for name in $namesContainer; do
-#  name=${name:1}
-  
-#  echo "container: - $name "
-#done
+if [ "running" == $containerState]
+then
+    echo "1"
+elif [ "exited" == $containerState]
+then
+    echo "2"
+else
+    echo "0"
+fi
+
+#   created 
+#   running
+#   restarting
+#   removing
+#   exited
+#   paused
+#   dead
