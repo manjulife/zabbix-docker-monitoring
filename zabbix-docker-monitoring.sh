@@ -3,6 +3,7 @@ containerID=$(curl -s --unix-socket /var/run/docker.sock http:/localhost/contain
 echo "containerID: $containerID"
 containerState=$(curl -s --unix-socket /var/run/docker.sock http:/localhost/containers/$containerID/json | jq -r .State.Status )
 
+
 echo "state: $containerState"
 #for name in $namesContainer; do
 #  name=${name:1}
