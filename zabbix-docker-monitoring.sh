@@ -5,10 +5,10 @@ containerID=$(curl -s --unix-socket /var/run/docker.sock http:/localhost/contain
 containerState=$(curl -s --unix-socket /var/run/docker.sock http:/localhost/containers/$containerID/json | jq -r .State.Status )
 #echo "state: $containerState"
 
-if [ "running" == $containerState]
+if [ "running" == "$containerState" ]
 then
     echo "1"
-elif [ "exited" == $containerState]
+elif [ "exited" == "$containerState" ]
 then
     echo "2"
 else
