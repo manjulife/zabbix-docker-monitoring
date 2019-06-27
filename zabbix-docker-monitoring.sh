@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 containerName=$1
 containerID=$(curl -s --unix-socket /var/run/docker.sock http:/localhost/containers/json?all=1 | jq -r ".[] | select(.Names[0]==\"/$containerName\") | .Id")
 #echo "containerID: $containerID"
