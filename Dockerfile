@@ -9,5 +9,5 @@ RUN apk add --update \
     jq \
     && rm -rf /var/cache/apk/*
 
-RUN addgroup docker --gid 990 && adduser root docker
-RUN addgroup docker --gid 990 && adduser zabbix docker
+#RUN addgroup docker --gid 990 && adduser root docker
+#RUN addgroup docker --gid 990 && adduser zabbix docker
